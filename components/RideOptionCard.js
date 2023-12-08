@@ -45,14 +45,14 @@ const RideOptionCard = () => {
 
   return (
     <SafeAreaView style={tw`bg-white flex-grow`}>
-      <View>
+      <View style={tw`flex flex-row items-center justify-between`}>
         <TouchableOpacity
           onPress={() => navigation.navigate("NavigateCard")}
-          style={tw`absolute top-3 left-5 p-3 rounded-full`}
+          style={tw`rounded-full w-1/5`}
         >
-          <Icon name="chevron-left" type="fontawesome" />
+          <Icon name="chevron-left" type="font-awesome" />
         </TouchableOpacity>
-        <Text style={tw`text-center py-5 text-xl`}>
+        <Text style={tw`text-center text-xl w-4/5`}>
           Select a ride - {travelTimeInformation?.distance.text}
         </Text>
       </View>
@@ -63,7 +63,7 @@ const RideOptionCard = () => {
         renderItem={({ item: { id, title, multiplier, image }, item }) => (
           <TouchableOpacity
             onPress={() => setSelected(item)}
-            style={tw`flex-row justify-between items-center px-10 ${
+            style={tw`flex  flex-row justify-between items-center px-10 ${
               id === selected?.id && "bg-gray-200"
             }`}
           >
@@ -80,9 +80,9 @@ const RideOptionCard = () => {
               <Text>{travelTimeInformation?.duration.text}Travel time</Text>
             </View>
             <Text style={tw`text-xl`}>
-              {new Intl.NumberFormat("en-gb", {
+              {new Intl.NumberFormat("en-INR", {
                 style: "currency",
-                currency: "GBP",
+                currency: "INR",
               }).format(
                 (travelTimeInformation?.duration.value *
                   SURGE_CHARGE_RATE *
@@ -97,10 +97,12 @@ const RideOptionCard = () => {
       <View>
         <TouchableOpacity
           disabled={!selected}
-          style={tw`bg-black py-3 m-3 ${!selected && "bg-gray-300"}`}
+          style={tw`bg-black absolute bottom-0 z-20 left-0 right-0 rounded-lg py-3 m-3 ${
+            !selected && "bg-gray-300"
+          }`}
         >
           <Text style={tw`text-center text-white text-xl`}>
-            Choose{selected?.title}
+            Choose {selected?.title}
           </Text>
         </TouchableOpacity>
       </View>

@@ -1,4 +1,3 @@
-import { StyleSheet, Text, View } from "react-native";
 import React, { useEffect, useRef } from "react";
 import MapView, { Marker } from "react-native-maps";
 import tw from "tailwind-react-native-classnames";
@@ -10,8 +9,6 @@ import {
   setTravelTimeInformtion,
 } from "../slices/navSlice";
 import MapViewDirections from "react-native-maps-directions";
-
-// import React, {useEffect} from "react";
 
 const Map = () => {
   const origin = useSelector(selectOrigin);
